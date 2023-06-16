@@ -5,7 +5,7 @@ import { join } from 'path'
 export default defineConfig((context) => {
   const mode = context.mode
   const envDir = 'env'
-  const base  = './'
+  const base = './'
   const plugins = createVitePlugins(mode)
   const resolve = {
     alias: {
@@ -17,12 +17,22 @@ export default defineConfig((context) => {
   const server = {
     open: true
   }
+  const build = {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          cesium: ['cesium']
+        }
+      }
+    }
+  }
   return {
     mode,
     envDir,
     base,
     plugins,
     resolve,
-    server
+    server,
+    build
   }
 })
