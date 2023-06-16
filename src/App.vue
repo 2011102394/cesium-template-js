@@ -1,30 +1,36 @@
-<script setup>
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
+<!--
+    @description 
+    @author zhangcj
+    @date 2023-06-16 15:18:54
+ -->
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="app-container">
+    <div class="viewer-container" ref="viewerDOM"></div>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<script setup>
+import "cesium/Build/CesiumUnminified/Widgets/widgets.css"
+import { onMounted, ref } from "vue"
+import { Viewer } from "cesium"
+const viewerDOM = ref()
+window.CESIUM_BASE_URL = 'libs/cesium/'
+onMounted(() => {
+  viewerInit()
+})
+const viewerInit = () => {
+  const viewer = new Viewer(viewerDOM.value, {
+    infoBox: false,
+  })
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+</script>
+
+<style lang="less" scoped>
+.app-container {
+  height: 100%;
+  .viewer-container {
+    height: 100%;
+    width: 100%;
+  }
 }
 </style>
