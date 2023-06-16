@@ -6,9 +6,10 @@
 import vue from '@vitejs/plugin-vue'
 import { splitVendorChunkPlugin } from 'vite'
 import { createExternalPlugin } from './plugins/external'
+import { createInsertHtmlPlugin } from './plugins/insertHtml'
 export function createVitePlugins(mode) {
     const plugins = [
-        vue(), splitVendorChunkPlugin(), createExternalPlugin()
+        vue(), splitVendorChunkPlugin(), createExternalPlugin(), createInsertHtmlPlugin(mode)
     ]
     return plugins
 }
