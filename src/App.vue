@@ -10,17 +10,17 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue"
-import { Viewer } from "cesium"
+import { onMounted, ref } from 'vue'
+import { Viewer } from 'cesium'
 const viewerDOM = ref()
 onMounted(() => {
   viewerInit()
 })
 const viewerInit = () => {
   const viewer = new Viewer(viewerDOM.value, {
-    infoBox: false,
+    infoBox: false
   })
-  viewer.animation.container.setAttribute("style", "display:none")
+  viewer.animation.container.setAttribute('style', 'display:none')
 }
 </script>
 

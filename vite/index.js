@@ -10,13 +10,17 @@ import { createInsertHtmlPlugin } from './plugins/insertHtml'
 import { createStaticCopyPlugin } from './plugins/staticCopy'
 import { createCompressionPlugin } from './plugins/compress'
 export function createVitePlugins(mode) {
-    const plugins = [
-        vue(), splitVendorChunkPlugin(), createExternalPlugin(), createInsertHtmlPlugin(mode), createStaticCopyPlugin(),
-    ]
-    if (mode === 'production') {
-        // 正式环境
-        // 打包gib压缩
-        plugins.push(createCompressionPlugin())
-    }
-    return plugins
+  const plugins = [
+    vue(),
+    splitVendorChunkPlugin(),
+    createExternalPlugin(),
+    createInsertHtmlPlugin(mode),
+    createStaticCopyPlugin()
+  ]
+  if (mode === 'production') {
+    // 正式环境
+    // 打包gib压缩
+    plugins.push(createCompressionPlugin())
+  }
+  return plugins
 }
